@@ -4,6 +4,8 @@ package model;
 import view.GameFrame;
 import view.Menu;
 
+import java.awt.*;
+
 public class Game {
     public static final int NUMBERROWS = 8;
     public static final int NUMBERCOLUMNS = 8;
@@ -47,9 +49,15 @@ public class Game {
     }
 
         public static void main(String[] args) {
+            String fonts[]
+                    = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+
+            for (int i = 0; i < fonts.length; i++) {
+                System.out.println(fonts[i]);
+            }
+        Menu menu = new Menu();
         GameFrame gf = new GameFrame();
         Game g = new Game();
-        Menu m= new Menu();
             System.out.println(g.getNumberOfMyCheckers());
             System.out.println(g.getNumberOfOpponentCheckers());
         System.out.print("Hellouuu");

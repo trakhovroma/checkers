@@ -37,19 +37,20 @@ public class Menu extends JFrame{
         battle.setPreferredSize(dim1);
 
         newgame = new JButton("New Game");
+        newgame.setFont(new Font("Tester", Font., 40));
         newgame.setPreferredSize(dimension);
-        newgame.setBackground(new Color(226, 137, 44));
-        newgame.setForeground(Color.RED);
+        newgame.setBackground(new Color(102, 51, 0));
+        newgame.setForeground(new Color(204, 102, 0));
 
         scores = new JButton("Scores");
         scores.setPreferredSize(dimension);
-        scores.setBackground(new Color(226, 137, 44));
-        scores.setForeground(Color.RED);
+        scores.setBackground(new Color(102, 51, 0));
+        scores.setForeground(Color.WHITE);
 
         exitbutton = new JButton("Exit");
         exitbutton.setPreferredSize(dimension);
-        exitbutton.setBackground(new Color(226, 137, 44));
-        exitbutton.setForeground(Color.RED);
+        exitbutton.setBackground(new Color(102, 51, 0));
+        exitbutton.setForeground(Color.WHITE);
 
         newgame.setFont(new Font("Droid Sans Mono",Font.BOLD, 40));
         scores.setFont(new Font("Droid Sans Mono",Font.BOLD, 40));
@@ -60,7 +61,7 @@ public class Menu extends JFrame{
         frame.add(newgame);
         frame.add(scores);
         frame.add(exitbutton);
-        frame.getContentPane().setBackground(new Color(226, 197, 54));
+        frame.getContentPane().setBackground(new Color(204, 153, 0));
 
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));

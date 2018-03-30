@@ -8,9 +8,17 @@ public class GameFrame extends JFrame {
 
 
     private JFrame gameframe;
+    private JButton[][] buttons;
 
     public GameFrame() {
-        Dimension dimension = new Dimension(800, 640);
+        gameframe = new JFrame("Checkers Game");
+        gameframe.setResizable(false);
+        gameframe.setSize(480, 480);
+        Dimension dimension = new Dimension(640, 640);
         gameframe.setVisible(true);
+    }
+
+    public void initializeButtons(){
+
     }
 }
