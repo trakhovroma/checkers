@@ -37,10 +37,9 @@ public class Menu extends JFrame{
         battle.setPreferredSize(dim1);
 
         newgame = new JButton("New Game");
-        newgame.setFont(new Font("Tester", Font., 40));
         newgame.setPreferredSize(dimension);
         newgame.setBackground(new Color(102, 51, 0));
-        newgame.setForeground(new Color(204, 102, 0));
+        newgame.setForeground(Color.WHITE);
 
         scores = new JButton("Scores");
         scores.setPreferredSize(dimension);

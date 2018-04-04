@@ -49,17 +49,7 @@ public class Game {
     }
 
         public static void main(String[] args) {
-            String fonts[]
-                    = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 
-            for (int i = 0; i < fonts.length; i++) {
-                System.out.println(fonts[i]);
-            }
-        Menu menu = new Menu();
         GameFrame gf = new GameFrame();
-        Game g = new Game();
-            System.out.println(g.getNumberOfMyCheckers());
-            System.out.println(g.getNumberOfOpponentCheckers());
-        System.out.print("Hellouuu");
     }
 }
