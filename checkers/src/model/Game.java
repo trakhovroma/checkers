@@ -49,7 +49,7 @@ public class Game {
     }
 
         public static void main(String[] args) {
-
-        GameFrame gf = new GameFrame();
+        model.Menu menu = new model.Menu();
+        controller.Menu m = new controller.Menu(menu);
     }
 }

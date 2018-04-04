@@ -79,7 +79,7 @@ public class Menu extends JFrame{
         Font font = new Font("Arial", Font.ITALIC, 14);
         label.setFont(font);
         frame.add(label);
-        frame.setBackground(new Color(188, 231, 231));
+        frame.setBackground(new Color(204, 153, 0));
         frame.setVisible(true);
     }
     public void rulesAction(){
@@ -90,7 +90,7 @@ public class Menu extends JFrame{
         Font font = new Font("Arial", Font.ITALIC, 14);
         label.setFont(font);
         frame.add(label);
-        frame.setBackground(new Color(188, 231, 231));
+        frame.setBackground(new Color(204, 153, 0));
         frame.setVisible(true);
     }
     //getters
