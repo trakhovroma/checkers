@@ -11,11 +11,17 @@ public class Game {
     public static final int NUMBERCOLUMNS = 8;
 
     private Cell[][] cells;
+    private String myname;
+    private String opponentname;
 
-    public Game(){
+    public Game(String my_name, String opponent_name){
+        myname = my_name;
+        opponentname = opponent_name;
+        GameFrame gf = new GameFrame(myname, opponentname);
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
     }
+
 
     private void fillcells(){
         for(int i=1;i<NUMBERROWS+1;i++){
@@ -48,8 +54,4 @@ public class Game {
         return number;
     }
 
-        public static void main(String[] args) {
-        model.Menu menu = new model.Menu();
-        controller.Menu m = new controller.Menu(menu);
-    }
 }

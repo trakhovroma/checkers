@@ -56,7 +56,6 @@ public class Menu extends JFrame{
         exitbutton.setFont(new Font("Droid Sans Mono",Font.BOLD, 40));
 
         frame.add(battle);
-        frame.add(new JLabel(new ImageIcon("/home/trakhov-pc/IdeaProjects/SeaBattle/images/maintheme.png")));
         frame.add(newgame);
         frame.add(scores);
         frame.add(exitbutton);

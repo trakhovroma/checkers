@@ -10,6 +10,7 @@ public class Menu extends view.Menu {
     }
     public void newGame(){
         getFrame().dispose();
-        model.Game sg = new model.Game();
+        model.NewGame ng = new model.NewGame();
+        controller.NewGame sg = new controller.NewGame(ng);
     }
 }

@@ -13,20 +13,24 @@ public class GameFrame extends JFrame {
     private JLabel opponentname;
     private JButton concede;
     private JButton draw;
+    private String myn;
+    private String opn;
 
-    public GameFrame() {
+    public GameFrame(String mn, String on) {
+        myn = mn;
+        opn = on;
         gameframe = new JFrame("Checkers Game");
         gameframe.setSize(1080, 780);
         buttons = new JButton[8][8];
         for (int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                buttons[i][j] = new JButton("SHAHKA");
+                buttons[i][j] = new JButton("SHAHK");
                 buttons[i][j].setBounds(60+i*80,80 +j*80, 80,80);
                 gameframe.add(buttons[i][j]);
             }
         }
-        myname = new JLabel("My_name");
-        opponentname = new JLabel("Opponent_name");
+        myname = new JLabel(myn);
+        opponentname = new JLabel(opn);
         opponentname.setBounds(780,60,380,80);
         myname.setBounds(780,660,380,80);
         concede = new JButton("Concede");

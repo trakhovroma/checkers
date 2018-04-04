@@ -31,7 +31,7 @@ public class NewGame {
                 System.exit(255);
             }
             st.dispose();
-            model.Game game = new model.Game();
+            model.Game game = new model.Game(st.getString(),opponent_name);
         }
     }
 
@@ -43,7 +43,7 @@ public class NewGame {
             model.Info tr = new model.Info(0, st.getString());
 
             try {
-                client = new Client(st,"localhost","4567");
+                client = new Client(st,"localhost","8904");
                 opponent_name = client.sendName(tr.getName());
             }
             catch(IOException e){
@@ -52,7 +52,7 @@ public class NewGame {
                 System.exit(255);
             }
             st.dispose();
-
+            model.Game game = new model.Game(st.getString(),opponent_name);
         }
     }
     public void dispose(){ st.dispose(); }
