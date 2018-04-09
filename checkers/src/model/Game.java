@@ -119,50 +119,50 @@ public class Game {
 
     public boolean eatmarker(int i,int j){
 
-        if (cells[i][j].getMyChecker() == true){
-            if (cells[i][j].getKing()==true){
-                        if ((getnearestcheck1(i,j)[0] <=6) & (getnearestcheck1(i,j)[1] <=6)){
-                            if (cells[getnearestcheck1(i,j)[0]+1][getnearestcheck1(i,j)[1]+1].getEmpty() == true){
-                                return true;
-                            }
-                        }
-                        else if ((getnearestcheck2(i,j)[0] <=6) & (getnearestcheck2(i,j)[1] <=7) & (getnearestcheck2(i,j)[1] >0)){
-                            if (cells[getnearestcheck2(i,j)[0]+1][getnearestcheck2(i,j)[1]-1].getEmpty() == true){
-                                return true;
-                            }
-                        }
-                        else if ((getnearestcheck3(i,j)[1] <=6) & (getnearestcheck3(i,j)[0] <=7) & (getnearestcheck3(i,j)[0] >0)){
-                            if (cells[getnearestcheck3(i,j)[0]-1][getnearestcheck3(i,j)[1]+1].getEmpty() == true){
-                                return true;
-                            }
-                        }
-                        else if ((getnearestcheck4(i,j)[0] <=7) & (getnearestcheck4(i,j)[0] >0) & (getnearestcheck4(i,j)[1] <=7) & (getnearestcheck4(i,j)[1] >0)){
-                            if (cells[getnearestcheck4(i,j)[0]-1][getnearestcheck4(i,j)[1]-1].getEmpty() == true){
-                                return true;
-                            }
+        if (cells[i][j].getMyChecker() == true) {
+            if (cells[i][j].getKing() == true) {
+                if ((getnearestcheck1(i, j)[0] <= 6) & (getnearestcheck1(i, j)[1] <= 6)) {
+                    if (cells[getnearestcheck1(i, j)[0] + 1][getnearestcheck1(i, j)[1] + 1].getEmpty() == true) {
+                        return true;
+                    }
+                } else if ((getnearestcheck2(i, j)[0] <= 6) & (getnearestcheck2(i, j)[1] <= 7) & (getnearestcheck2(i, j)[1] > 0)) {
+                    if (cells[getnearestcheck2(i, j)[0] + 1][getnearestcheck2(i, j)[1] - 1].getEmpty() == true) {
+                        return true;
+                    }
+                } else if ((getnearestcheck3(i, j)[1] <= 6) & (getnearestcheck3(i, j)[0] <= 7) & (getnearestcheck3(i, j)[0] > 0)) {
+                    if (cells[getnearestcheck3(i, j)[0] - 1][getnearestcheck3(i, j)[1] + 1].getEmpty() == true) {
+                        return true;
+                    }
+                } else if ((getnearestcheck4(i, j)[0] <= 7) & (getnearestcheck4(i, j)[0] > 0) & (getnearestcheck4(i, j)[1] <= 7) & (getnearestcheck4(i, j)[1] > 0)) {
+                    if (cells[getnearestcheck4(i, j)[0] - 1][getnearestcheck4(i, j)[1] - 1].getEmpty() == true) {
+                        return true;
+                    }
                 }
 
-            }
-        }
-        else if (cells[i][j].getKing() == false){
-            if ((i+2<=7) &(j+2)<=7){
-                if ((cells[i+1][j+1].getOpponentChecker() == true) & (cells[i+2][j+2]).getEmpty() == true){
-                    return true;
+            } else if (cells[i][j].getKing() == false) {
+                if ((i + 2 <= 7) & (j + 2) <= 7) {
+
+                    if ((cells[i + 1][j + 1].getOpponentChecker() == true) & (cells[i + 2][j + 2]).getEmpty() == true) {
+                        return true;
+                    }
                 }
-            }
-            if ((i+2<=7) &(j-2)>=0){
-                if ((cells[i+1][j-1].getOpponentChecker() == true) & (cells[i+2][j-2]).getEmpty() == true){
-                    return true;
+                if ((i + 2 <= 7) & (j - 2) >= 0) {
+
+                    if ((cells[i + 1][j - 1].getOpponentChecker() == true) & (cells[i + 2][j - 2]).getEmpty() == true) {
+                        return true;
+                    }
                 }
-            }
-            if ((i-2>=0) &(j+2)<=7){
-                if ((cells[i-1][j+1].getOpponentChecker() == true) & (cells[i-2][j+2]).getEmpty() == true){
-                    return true;
+                if ((i - 2 >= 0) & (j + 2) <= 7) {
+
+                    if ((cells[i - 1][j + 1].getOpponentChecker() == true) & (cells[i - 2][j + 2]).getEmpty() == true) {
+                        return true;
+                    }
                 }
-            }
-            if ((i-2>=0) &(j-2)>=0){
-                if ((cells[i-1][j-1].getOpponentChecker() == true) & (cells[i-2][j-2]).getEmpty() == true){
-                    return true;
+                if ((i - 2 >= 0) & (j - 2) >= 0) {
+
+                    if ((cells[i - 1][j - 1].getOpponentChecker() == true) & (cells[i - 2][j - 2]).getEmpty() == true) {
+                        return true;
+                    }
                 }
             }
         }
