@@ -284,6 +284,14 @@ public class Game {
         gf.getDrawButton().addActionListener(a);
     }
 
+    public void setOffColored(){
+        for (int i=0;i<8;i++){
+            for(int j = 0;j<8;j++) {
+                cells[i][j].setColored(false);
+            }
+            }
+    }
+
     public void setColoredYellow(){
         for (int i=0;i<8;i++){
             for(int j = 0;j<8;j++){
@@ -349,8 +357,10 @@ public class Game {
             } else if (cells[7 - i][7 - j].getTurned()) {
                 if (cells[7 - i][7 - j].isColored()) {
                     System.out.println("He");
-                    cells[getChecked()[0]][getChecked()[1]].setEmpty(true);
+                    cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
+                    /*gf.getButtons()[7 - getChecked()[0]][7 - getChecked()[1]].setIcon(null);*/
                     cells[7-i][7-j].setMyChecker(true);
+                    setOffColored();
                     draw();
                 }
             }

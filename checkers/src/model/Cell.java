@@ -103,4 +103,5 @@ public class Cell {
     public void setColored2(boolean colored2) {
         this.colored2 = colored2;
     }
+
 }
