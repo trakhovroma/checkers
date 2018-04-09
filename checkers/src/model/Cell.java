@@ -1,6 +1,10 @@
 package model;
 
 public class Cell {
+    private boolean checked;
+    private boolean turned;
+    private boolean colored;
+    private boolean colored2;
     private boolean empty;
     private boolean opponent_checker;
     private boolean my_checker;
@@ -10,6 +14,10 @@ public class Cell {
     private boolean king;
 
     public Cell(int x, int y){
+        this.checked = false;
+        this.turned = false;
+        this.colored2 = false;
+        this.colored = false;
         this.x = x;
         this.y = y;
         this.king = false;
@@ -19,20 +27,20 @@ public class Cell {
         else {
             this.active = false;
         }
-        if ((this.active == true) &(this.y <=3)){
+        if ((this.active == true) &(this.y <=2)){
             this.my_checker = true;
         }
         else{
             this.my_checker=false;
         }
 
-        if ((this.active == true) &(this.y >=6)){
+        if ((this.active == true) &(this.y >=5)){
             this.opponent_checker = true;
         }
         else{
             this.opponent_checker = false;
         }
-        if ((this.active == true) &(this.y >=4) & (this.y <=5)){
+        if ((this.active == true) &(this.y >=3) & (this.y <=4)){
             this.empty = true;
         }
         else{
@@ -54,5 +62,45 @@ public class Cell {
     }
     public boolean getKing(){
         return king;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public boolean isColored() {
+        return colored;
+    }
+    public void setChecked(boolean checked){
+        this.checked = checked;
+    }
+
+    public void setColored(boolean colored) {
+        if (colored == true){
+            this.turned = true;
+        }
+        else{
+            this.turned = false;
+        }
+        this.colored = colored;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+    public void setEmpty(boolean empty){
+        this.empty=empty;
+    }
+    public void setMyChecker(boolean my_checker){
+        this.my_checker=my_checker;
+    }
+    public void setTurned(boolean turned) {this.turned = turned;}
+    public boolean getTurned(){ return turned;}
+    public void setColored2(boolean colored2) {
+        this.colored2 = colored2;
     }
 }

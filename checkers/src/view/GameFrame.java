@@ -6,6 +6,12 @@ import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
 
+    public static final String PROJECT_DIRECTORY = System.getProperty("user.dir");
+    public static final String BLUECHECKER = PROJECT_DIRECTORY + "/images/BLUECHECKER.png";
+    public static final String GREENCHECKER = PROJECT_DIRECTORY + "/images/GREENCHECKER.png";
+    public static final String GREENKING = PROJECT_DIRECTORY + "/images/greenking.png";
+    public static final String BLUEKING = PROJECT_DIRECTORY + "/images/blueking.png";
+
 
     private JFrame gameframe;
     private JButton[][] buttons;
@@ -24,11 +30,18 @@ public class GameFrame extends JFrame {
         buttons = new JButton[8][8];
         for (int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                buttons[i][j] = new JButton("SHAHK");
+                buttons[i][j] = new JButton();
                 buttons[i][j].setBounds(60+i*80,80 +j*80, 80,80);
+                if ((i+j) % 2 == 0) {
+                    buttons[i][j].setBackground(new Color(192,192,192));
+                }
+                else {
+                    buttons[i][j].setBackground(new Color(128,128,128));
+                }
                 gameframe.add(buttons[i][j]);
             }
         }
+
         myname = new JLabel(myn);
         opponentname = new JLabel(opn);
         opponentname.setBounds(780,60,380,80);
@@ -47,7 +60,38 @@ public class GameFrame extends JFrame {
         gameframe.setVisible(true);
     }
 
-    public void initializeButtons(){
+    public JButton[][] getButtons(){
+        return buttons;
+    }
+    public JButton getConcedeButton(){
+        return concede;
+    }
+    public JButton getDrawButton(){
+        return draw;
+    }
+    public void dispose() {
+        gameframe.dispose();
+    }
+    public void setYellow(int i, int j){
+        buttons[i][7-j].setBackground(new Color(169,192, 79));
+    }
 
+    public void setMyChecker(int i, int j){
+        buttons[i][j].setIcon(new ImageIcon(GREENCHECKER));
+    }
+    public void setOpponentCHecker(int i, int j){
+        buttons[i][j].setIcon(new ImageIcon(BLUECHECKER));
+    }
+    public void setBasicColors(){
+        for (int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                if ((i+j) % 2 == 0) {
+                    buttons[i][j].setBackground(new Color(192,192,192));
+                }
+                else {
+                    buttons[i][j].setBackground(new Color(128,128,128));
+                }
+            }
+        }
     }
 }
