@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+import static java.lang.Math.abs;
+
 public class Game {
     public static final int NUMBERROWS = 8;
     public static final int NUMBERCOLUMNS = 8;
@@ -192,23 +194,8 @@ public class Game {
         return false;
     }
 
-
-
-    public boolean findturns(){
-        for(int i=0;i<NUMBERROWS;i++){
-            for(int j=0;j<NUMBERCOLUMNS;j++){
-                    if (eatmarker(i,j) == true){
-                        return true;
-                    }
-                }
-                }
-        return false;
-    }
-
-
-
     public int[] getnearestcheck1(int x, int y){
-        while ((x <=7) &(y <=7)){
+        while ((x <=6) &(y <=6)){
             if (cells[x+1][y+1].getOpponentChecker() == true){
                 return new int[] {x+1, y+1} ;
             }
@@ -223,7 +210,7 @@ public class Game {
         return new int[] {99,99};
     }
     public int[] getnearestcheck2(int x, int y){
-        while ((x <=7) &(y >=0)){
+        while ((x <=6) &(y >0)){
             if (cells[x+1][y-1].getOpponentChecker() == true){
                 return new int[] {x+1, y-1} ;
             }
@@ -240,7 +227,7 @@ public class Game {
     }
 
     public int[] getnearestcheck3(int x, int y){
-        while ((x >=0) &(y <=7)){
+        while ((x >0) &(y <=6)){
             if (cells[x-1][y+1].getOpponentChecker() == true){
                 return new int[] {x-1, y+1} ;
             }
@@ -256,7 +243,7 @@ public class Game {
     }
 
     public int[] getnearestcheck4(int x, int y){
-        while ((x >= 0) &(y >= 0)){
+        while ((x > 0) &(y > 0)){
             if (cells[x-1][y-1].getOpponentChecker() == true){
                 return new int[] {x-1, y-1} ;
             }
@@ -332,11 +319,17 @@ public class Game {
     public void setCheckers(){
         for (int i=0;i<8;i++){
             for(int j = 0;j<8;j++){
-                if (cells[i][j].getMyChecker()){
+                if ((cells[i][j].getMyChecker()) & (cells[i][j].getKing())){
+                    gf.setMyKing(i,7-j);
+                }
+                else if (cells[i][j].getMyChecker()){
                     gf.setMyChecker(i,7-j);
                 }
-                if (cells[i][j].getOpponentChecker()){
-                    gf.setOpponentCHecker(i,7-j);
+                if ((cells[i][j].getOpponentChecker()) & (cells[i][j].getKing())){
+                    gf.setOpponentKing(i,7-j);
+                }
+                else if (cells[i][j].getOpponentChecker()){
+                    gf.setOpponentChecker(i,7-j);
                 }
             }
         }
@@ -373,7 +366,6 @@ public class Game {
 
     public void eat(int i,int j){
         if (eatmarker(i,j)){
-            System.out.println("BOY");
             setOffColored();
             availableturns(cells[i][j]);
             cells[i][j].setChecked(true);
@@ -400,8 +392,11 @@ public class Game {
             }
             else{
                 cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
-                cells[(7-i+getChecked()[0])/2][(7-j+getChecked()[1])/2].setOpponentChecker(false);
+                cells[7-i -(7-i-getChecked()[0])/abs(7-i-getChecked()[0])][7-j -(7-j-getChecked()[1])/abs(7-j-getChecked()[1])].setOpponentChecker(false);
                 cells[7-i][7-j].setMyChecker(true);
+                if (cells[getChecked()[0]][getChecked()[1]].getKing()){
+                    cells[7-i][7-j].setKing(true);
+                }
                 setOffColored();
                 draw();
                 eat(7-i,7-j);

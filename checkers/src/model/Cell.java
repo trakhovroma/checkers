@@ -49,6 +49,9 @@ public class Cell {
         else{
             this.empty = false;
         }
+        if ((x ==0) & (y == 2)){
+            this.king = true;
+        }
     }
 
     public boolean getActive(){
@@ -57,6 +60,10 @@ public class Cell {
     public boolean getEmpty(){
         return empty;
     }
+    public void setKing(boolean king){
+        this.king = king;
+    }
+
     public boolean getMyChecker(){
         return my_checker;
     }

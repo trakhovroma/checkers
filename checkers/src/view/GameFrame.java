@@ -73,13 +73,18 @@ public class GameFrame extends JFrame {
         gameframe.dispose();
     }
     public void setYellow(int i, int j){
-        buttons[i][7-j].setBackground(new Color(169,192, 79));
+        buttons[i][7-j].setBackground(new Color(226,213,65));
     }
+
 
     public void setMyChecker(int i, int j){
         buttons[i][j].setIcon(new ImageIcon(GREENCHECKER));
     }
-    public void setOpponentCHecker(int i, int j){
+    public void setMyKing(int i, int j){
+        buttons[i][j].setIcon(new ImageIcon(GREENKING));
+    }
+    public void setOpponentKing(int i, int j){buttons[i][j].setIcon(new ImageIcon(BLUEKING));}
+    public void setOpponentChecker(int i, int j){
         buttons[i][j].setIcon(new ImageIcon(BLUECHECKER));
     }
     public void setBasicColors(){
