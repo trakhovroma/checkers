@@ -34,76 +34,76 @@ public class Game {
         }
     }
 
-    public void availableturns(Cell cell){
+    public void availableturns(Cell cell) {
         int x = cell.getX();
         int y = cell.getY();
-        if (cell.getMyChecker() == true){
-            if (eatmarker(x , y) == true){
-                if (cell.getKing() == true){
-                    if ((getnearestcheck1(x,y)[0] <=6) & (getnearestcheck1(x,y)[1] <=6)){
-                        if (cells[getnearestcheck1(x,y)[0]+1][getnearestcheck1(x,y)[1]+1].getEmpty() == true){
-                            cells[getnearestcheck1(x,y)[0]+1][getnearestcheck1(x,y)[1]+1].setColored(true);
+        if (cell.getMyChecker()) {
+            if (eatmarker(x, y)) {
+                if (cell.getKing()) {
+                    if ((getnearestcheck1(x, y)[0] <= 6) & (getnearestcheck1(x, y)[1] <= 6)) {
+                        if (cells[getnearestcheck1(x, y)[0] + 1][getnearestcheck1(x, y)[1] + 1].getEmpty() == true) {
+                            cells[getnearestcheck1(x, y)[0] + 1][getnearestcheck1(x, y)[1] + 1].setColored(true);
                         }
-                    }
-                    else if ((getnearestcheck2(x,y)[0] <=6) & (getnearestcheck2(x,y)[1] <=7) & (getnearestcheck2(x,y)[1] >0)){
-                        if (cells[getnearestcheck2(x,y)[0]+1][getnearestcheck2(x,y)[1]-1].getEmpty() == true){
-                            cells[getnearestcheck2(x,y)[0]+1][getnearestcheck2(x,y)[1]-1].setColored(true);
+                    } else if ((getnearestcheck2(x, y)[0] <= 6) & (getnearestcheck2(x, y)[1] <= 7) & (getnearestcheck2(x, y)[1] > 0)) {
+                        if (cells[getnearestcheck2(x, y)[0] + 1][getnearestcheck2(x, y)[1] - 1].getEmpty() == true) {
+                            cells[getnearestcheck2(x, y)[0] + 1][getnearestcheck2(x, y)[1] - 1].setColored(true);
                         }
-                    }
-                    else if ((getnearestcheck3(x,y)[1] <=6) & (getnearestcheck3(x,y)[0] <=7) & (getnearestcheck3(x,y)[0] >0)){
-                        if (cells[getnearestcheck3(x,y)[0]-1][getnearestcheck3(x,y)[1]+1].getEmpty() == true){
-                            cells[getnearestcheck3(x,y)[0]-1][getnearestcheck3(x,y)[1]+1].setColored(true);
+                    } else if ((getnearestcheck3(x, y)[1] <= 6) & (getnearestcheck3(x, y)[0] <= 7) & (getnearestcheck3(x, y)[0] > 0)) {
+                        if (cells[getnearestcheck3(x, y)[0] - 1][getnearestcheck3(x, y)[1] + 1].getEmpty() == true) {
+                            cells[getnearestcheck3(x, y)[0] - 1][getnearestcheck3(x, y)[1] + 1].setColored(true);
                         }
-                    }
-                    else if ((getnearestcheck4(x,y)[0] <=7) & (getnearestcheck4(x,y)[0] >0) & (getnearestcheck4(x,y)[1] <=7) & (getnearestcheck4(x,y)[1] >0)){
-                        if (cells[getnearestcheck4(x,y)[0]-1][getnearestcheck4(y,x)[1]-1].getEmpty() == true){
-                            cells[getnearestcheck4(x,y)[0]-1][getnearestcheck4(y,x)[1]-1].setColored(true);
+                    } else if ((getnearestcheck4(x, y)[0] <= 7) & (getnearestcheck4(x, y)[0] > 0) & (getnearestcheck4(x, y)[1] <= 7) & (getnearestcheck4(x, y)[1] > 0)) {
+                        if (cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(y, x)[1] - 1].getEmpty() == true) {
+                            cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(y, x)[1] - 1].setColored(true);
                         }
                     }
                 }
-            }
-            else{
-                if (cell.getKing() == false){
+                else if (cell.getKing()==false){
+                    System.out.println("method eating checker");
+                }
+            } else if (eatmarker(x, y) == false) {
+
+                if (cell.getKing() == false) {
                     System.out.println("notKing");
-                    if ((x <=6) & (y <=6)){
-                        if (cells[x+1][y+1].getEmpty()) {
+                    if ((x <= 6) & (y <= 6)) {
+                        if (cells[x + 1][y + 1].getEmpty()) {
+                            System.out.println("right");
                             cells[x + 1][y + 1].setColored(true);
                         }
                     }
-                    if ((x >0) & (y<=6)) {
-                        if (cells[x-1][y+1].getEmpty()) {
-                        System.out.println("left");
-                        cells[x - 1][y + 1].setColored(true);
-                    }
+                    if ((x > 0) & (y <= 6)) {
+                        if (cells[x - 1][y + 1].getEmpty()) {
+                            System.out.println("left");
+                            cells[x - 1][y + 1].setColored(true);
+                        }
                     }
 
-                }
-                else if (cell.getKing() == true){
+                } else if (cell.getKing() == true) {
                     int i = x;
                     int j = y;
-                    while ((i<7) & (j<7) & (cells[i+1][j+1].getEmpty())){
-                        cells[i+1][j+1].setColored(true);
+                    while ((i < 7) & (j < 7) & (cells[i + 1][j + 1].getEmpty())) {
+                        cells[i + 1][j + 1].setColored(true);
                         i++;
                         j++;
                     }
                     i = x;
                     j = y;
-                    while ((i>0) &(j<7)&(cells[i-1][j+1].getEmpty())){
-                        cells[i-1][j+1].setColored(true);
+                    while ((i > 0) & (j < 7) & (cells[i - 1][j + 1].getEmpty())) {
+                        cells[i - 1][j + 1].setColored(true);
                         i--;
                         j++;
                     }
                     i = x;
                     j = y;
-                    while ((i<7) &(j>0)&(cells[i+1][j-1].getEmpty())){
-                        cells[i+1][j-1].setColored(true);
+                    while ((i < 7) & (j > 0) & (cells[i + 1][j - 1].getEmpty())) {
+                        cells[i + 1][j - 1].setColored(true);
                         i++;
                         j--;
                     }
                     i = x;
                     j = y;
-                    while ((i>0) &(j>0)&(cells[i-1][j-1].getEmpty())){
-                        cells[i-1][j-1].setColored(true);
+                    while ((i > 0) & (j > 0) & (cells[i - 1][j - 1].getEmpty())) {
+                        cells[i - 1][j - 1].setColored(true);
                         i--;
                         j--;
                     }
@@ -288,6 +288,8 @@ public class Game {
         for (int i=0;i<8;i++){
             for(int j = 0;j<8;j++) {
                 cells[i][j].setColored(false);
+                cells[i][j].setChecked(false);
+                cells[i][j].setTurned(false);
             }
             }
     }
@@ -347,22 +349,19 @@ public class Game {
         }
 
         if (eat){
-            System.out.println("Hello");
+            System.out.println("You need to eat");
         }
         else {
-            if (cells[7 - i][7 - j].getTurned() == false) {
+            if (cells[7 - i][7 - j].isColored() == false) {
+                setOffColored();
                 availableturns(cells[7 - i][7 - j]);
                 cells[7-i][7-j].setChecked(true);
                 draw();
-            } else if (cells[7 - i][7 - j].getTurned()) {
-                if (cells[7 - i][7 - j].isColored()) {
-                    System.out.println("He");
+            } else if (cells[7 - i][7 - j].isColored()) {
                     cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
-                    /*gf.getButtons()[7 - getChecked()[0]][7 - getChecked()[1]].setIcon(null);*/
                     cells[7-i][7-j].setMyChecker(true);
                     setOffColored();
                     draw();
-                }
             }
         }
 }

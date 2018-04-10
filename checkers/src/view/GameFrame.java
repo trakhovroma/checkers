@@ -87,9 +87,11 @@ public class GameFrame extends JFrame {
             for(int j=0;j<8;j++){
                 if ((i+j) % 2 == 0) {
                     buttons[i][j].setBackground(new Color(192,192,192));
+                    buttons[i][j].setIcon(null);
                 }
                 else {
                     buttons[i][j].setBackground(new Color(128,128,128));
+                    buttons[i][j].setIcon(null);
                 }
             }
         }

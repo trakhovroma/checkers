@@ -96,7 +96,14 @@ public class Cell {
         this.empty=empty;
     }
     public void setMyChecker(boolean my_checker){
-        this.my_checker=my_checker;
+        if (my_checker==true) {
+            this.my_checker = my_checker;
+            this.empty = false;
+        }
+        else{
+            this.my_checker = my_checker;
+            this.empty = true;
+        }
     }
     public void setTurned(boolean turned) {this.turned = turned;}
     public boolean getTurned(){ return turned;}
