@@ -298,6 +298,7 @@ public class Game {
         for (int i=0;i<8;i++){
             for(int j = 0;j<8;j++) {
                 cells[i][j].setColored(false);
+                cells[i][j].setTurned(false);
                 cells[i][j].setChecked(false);
                 cells[i][j].setTurned(false);
             }

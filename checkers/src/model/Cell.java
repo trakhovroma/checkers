@@ -90,12 +90,6 @@ public class Cell {
     }
 
     public void setColored(boolean colored) {
-        if (colored == true){
-            this.turned = true;
-        }
-        else{
-            this.turned = false;
-        }
         this.colored = colored;
     }
 
