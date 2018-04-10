@@ -106,31 +106,70 @@ public class Game {
                 } else if (cell.getKing() == true) {
                     int i = x;
                     int j = y;
-                    while ((i < 7) & (j < 7) & (cells[i + 1][j + 1].getEmpty())) {
-                        cells[i + 1][j + 1].setColored(true);
-                        i++;
-                        j++;
+                    System.out.println("******************");
+                    System.out.println(x);
+                    System.out.println(y);
+                    System.out.println("*****************");
+                    while ((i <= 6) & (j <= 6)) {
+                        if (cells[i + 1][j + 1].getEmpty()) {
+                            System.out.println("firstWHILE");
+                            cells[i + 1][j + 1].setColored(true);
+                            i++;
+                            j++;
+                        }
+                        else{
+                            i+=100;
+                            y+=100;
+                        }
                     }
                     i = x;
                     j = y;
-                    while ((i > 0) & (j < 7) & (cells[i - 1][j + 1].getEmpty())) {
-                        cells[i - 1][j + 1].setColored(true);
-                        i--;
-                        j++;
+
+                    while ((i >= 1) & (j <= 6)) {
+                        System.out.println("secondWHILE");
+                        if (cells[i - 1][j + 1].getEmpty()) {
+                            cells[i - 1][j + 1].setColored(true);
+                            i--;
+                            j++;
+                        }
+                        else {
+                            i-=100;
+                            j+=100;
+                        }
                     }
                     i = x;
                     j = y;
-                    while ((i < 7) & (j > 0) & (cells[i + 1][j - 1].getEmpty())) {
-                        cells[i + 1][j - 1].setColored(true);
-                        i++;
-                        j--;
+                    System.out.println("TEST2");
+                    System.out.println(i);
+                    System.out.println(j);
+                    System.out.println("thirdWHILE2");
+                    while ((i <= 6) & (j >= 1)) {
+                        System.out.println("TEST");
+                        System.out.println(i);
+                        System.out.println(j);
+                        System.out.println("thirdWHILE");
+                        if (cells[i + 1][j - 1].getEmpty()) {
+                            cells[i + 1][j - 1].setColored(true);
+                            i++;
+                            j--;
+                        }
+                        else{
+                            i+=100;
+                            j-=100;
+                        }
                     }
                     i = x;
                     j = y;
-                    while ((i > 0) & (j > 0) & (cells[i - 1][j - 1].getEmpty())) {
-                        cells[i - 1][j - 1].setColored(true);
-                        i--;
-                        j--;
+                    while ((i >= 1) & (j >= 1)) {
+                        if (cells[i - 1][j - 1].getEmpty()) {
+                            cells[i - 1][j - 1].setColored(true);
+                            i--;
+                            j--;
+                        }
+                        else {
+                            i-=100;
+                            j-=100;
+                        }
                     }
                 }
             }
@@ -413,6 +452,9 @@ public class Game {
             } else if (cells[7 - i][7 - j].isColored()) {
                 cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
                 cells[7-i][7-j].setMyChecker(true);
+                if (cells[getChecked()[0]][getChecked()[1]].getKing()){
+                    cells[7-i][7-j].setKing(true);
+                }
                 setOffColored();
                 draw();
             }
