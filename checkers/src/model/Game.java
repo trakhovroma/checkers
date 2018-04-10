@@ -59,7 +59,30 @@ public class Game {
                     }
                 }
                 else if (cell.getKing()==false){
-                    System.out.println("method eating checker");
+                    if ((x + 2 <= 7) & (y + 2) <= 7) {
+
+                        if ((cells[x + 1][y + 1].getOpponentChecker() == true) & (cells[x + 2][y + 2]).getEmpty() == true) {
+                            cells[x + 2][y + 2].setColored(true);
+                        }
+                    }
+                    if ((x + 2 <= 7) & (y - 2) >= 0) {
+
+                        if ((cells[x + 1][y - 1].getOpponentChecker() == true) & (cells[x + 2][y - 2]).getEmpty() == true) {
+                            cells[x + 2][y - 2].setColored(true);
+                        }
+                    }
+                    if ((x - 2 >= 0) & (y + 2) <= 7) {
+
+                        if ((cells[x - 1][y + 1].getOpponentChecker() == true) & (cells[x - 2][y + 2]).getEmpty() == true) {
+                            cells[x - 2][y + 2].setColored(true);
+                        }
+                    }
+                    if ((x - 2 >= 0) & (y - 2) >= 0) {
+
+                        if ((cells[x - 1][y - 1].getOpponentChecker() == true) & (cells[x - 2][y - 2]).getEmpty() == true) {
+                            cells[x - 2][y - 2].setColored(true);
+                        }
+                    }
                 }
             } else if (eatmarker(x, y) == false) {
 
@@ -312,7 +335,7 @@ public class Game {
                 if (cells[i][j].getMyChecker()){
                     gf.setMyChecker(i,7-j);
                 }
-                else if (cells[i][j].getOpponentChecker()){
+                if (cells[i][j].getOpponentChecker()){
                     gf.setOpponentCHecker(i,7-j);
                 }
             }
@@ -334,9 +357,7 @@ public class Game {
         gf.setBasicColors();
         setColoredYellow();
         setCheckers();
-    }
-
-    public void actionButton(int i, int j){
+    }public boolean checkeat(){
         boolean eat = false;
         for (int k=0;k<8;k++){
             for (int l=0;l<8;l++){
@@ -347,9 +368,45 @@ public class Game {
                 }
             }
         }
+        return eat;
+    }
 
-        if (eat){
-            System.out.println("You need to eat");
+    public void eat(int i,int j){
+        if (eatmarker(i,j)){
+            System.out.println("BOY");
+            setOffColored();
+            availableturns(cells[i][j]);
+            cells[i][j].setChecked(true);
+            draw();
+        }
+        else {
+            System.out.println("nothing to eat");
+        }
+    }
+
+    public void actionButton(int i, int j){
+
+        if (checkeat()){
+            if (cells[7 - i][7 - j].isColored() == false){
+                if (eatmarker(7-i,7-j) ==true){
+                    setOffColored();
+                    availableturns(cells[7 - i][7 - j]);
+                    cells[7-i][7-j].setChecked(true);
+                    draw();
+                }
+                else{
+                    JOptionPane.showMessageDialog(gf, "You need to eat");
+                }
+            }
+            else{
+                cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
+                cells[(7-i+getChecked()[0])/2][(7-j+getChecked()[1])/2].setOpponentChecker(false);
+                cells[7-i][7-j].setMyChecker(true);
+                setOffColored();
+                draw();
+                eat(7-i,7-j);
+            }
+
         }
         else {
             if (cells[7 - i][7 - j].isColored() == false) {
@@ -358,10 +415,10 @@ public class Game {
                 cells[7-i][7-j].setChecked(true);
                 draw();
             } else if (cells[7 - i][7 - j].isColored()) {
-                    cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
-                    cells[7-i][7-j].setMyChecker(true);
-                    setOffColored();
-                    draw();
+                cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
+                cells[7-i][7-j].setMyChecker(true);
+                setOffColored();
+                draw();
             }
         }
 }

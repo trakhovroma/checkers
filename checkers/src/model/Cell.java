@@ -34,13 +34,16 @@ public class Cell {
             this.my_checker=false;
         }
 
-        if ((this.active == true) &(this.y >=5)){
+        if ((this.active == true) &(this.y ==5)){
             this.opponent_checker = true;
         }
         else{
             this.opponent_checker = false;
         }
         if ((this.active == true) &(this.y >=3) & (this.y <=4)){
+            this.empty = true;
+        }
+        else if ((this.active == true) &(this.y >=6)){
             this.empty = true;
         }
         else{
@@ -105,6 +108,17 @@ public class Cell {
             this.empty = true;
         }
     }
+    public void setOpponentChecker(boolean opponent_checker){
+        if (opponent_checker) {
+            this.opponent_checker = opponent_checker;
+            this.empty = false;
+        }
+        else{
+            this.opponent_checker = opponent_checker;
+            this.empty = true;
+        }
+    }
+
     public void setTurned(boolean turned) {this.turned = turned;}
     public boolean getTurned(){ return turned;}
     public void setColored2(boolean colored2) {
