@@ -55,8 +55,13 @@ public class Game {
                             cells[getnearestcheck3(x, y)[0] - 1][getnearestcheck3(x, y)[1] + 1].setColored(true);
                         }
                     } else if ((getnearestcheck4(x, y)[0] <= 7) & (getnearestcheck4(x, y)[0] > 0) & (getnearestcheck4(x, y)[1] <= 7) & (getnearestcheck4(x, y)[1] > 0)) {
-                        if (cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(y, x)[1] - 1].getEmpty() == true) {
-                            cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(y, x)[1] - 1].setColored(true);
+                        System.out.println("********");
+                        System.out.println(cells[0][4].getEmpty());
+                        System.out.println(getnearestcheck4(x, y)[0]);
+                        System.out.println(getnearestcheck4(x, y)[1]);
+                        System.out.println("********");
+                        if (cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(x, y)[1] - 1].getEmpty() == true) {
+                            cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(x, y)[1] - 1].setColored(true);
                         }
                     }
                 }
@@ -89,16 +94,13 @@ public class Game {
             } else if (eatmarker(x, y) == false) {
 
                 if (cell.getKing() == false) {
-                    System.out.println("notKing");
                     if ((x <= 6) & (y <= 6)) {
                         if (cells[x + 1][y + 1].getEmpty()) {
-                            System.out.println("right");
                             cells[x + 1][y + 1].setColored(true);
                         }
                     }
                     if ((x > 0) & (y <= 6)) {
                         if (cells[x - 1][y + 1].getEmpty()) {
-                            System.out.println("left");
                             cells[x - 1][y + 1].setColored(true);
                         }
                     }
@@ -106,13 +108,8 @@ public class Game {
                 } else if (cell.getKing() == true) {
                     int i = cell.getX();
                     int j = cell.getY();
-                    System.out.println("******************");
-                    System.out.println(x);
-                    System.out.println(y);
-                    System.out.println("*****************");
                     while ((i <= 6) & (j <= 6)) {
                         if (cells[i + 1][j + 1].getEmpty()) {
-                            System.out.println("firstWHILE");
                             cells[i + 1][j + 1].setColored(true);
                             i++;
                             j++;
@@ -126,7 +123,6 @@ public class Game {
                     j = cell.getY();
 
                     while ((i >= 1) & (j <= 6)) {
-                        System.out.println("secondWHILE");
                         if (cells[i - 1][j + 1].getEmpty()) {
                             cells[i - 1][j + 1].setColored(true);
                             i--;
@@ -139,15 +135,7 @@ public class Game {
                     }
                     i = cell.getX();
                     j = cell.getY();
-                    System.out.println("TEST2");
-                    System.out.println(i);
-                    System.out.println(j);
-                    System.out.println("thirdWHILE2");
                     while ((i <= 6) & (j >= 1)) {
-                        System.out.println("TEST");
-                        System.out.println(i);
-                        System.out.println(j);
-                        System.out.println("thirdWHILE");
                         if (cells[i + 1][j - 1].getEmpty()) {
                             cells[i + 1][j - 1].setColored(true);
                             i++;
@@ -282,7 +270,7 @@ public class Game {
     }
 
     public int[] getnearestcheck4(int x, int y){
-        while ((x > 0) &(y > 0)){
+        while ((x > 0) & (y > 0)){
             if (cells[x-1][y-1].getOpponentChecker() == true){
                 return new int[] {x-1, y-1} ;
             }
