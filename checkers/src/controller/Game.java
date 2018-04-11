@@ -93,15 +93,13 @@ public class Game {
     private class Concede implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("TEST MESS");
-            game.setColoredYellow();
+
         }
     }
 
     private class Draw implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("TEST MESS2");
             game.draw();
         }
     }

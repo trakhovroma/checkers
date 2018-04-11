@@ -25,6 +25,7 @@ public class Game {
         gf = new view.GameFrame(myname, opponentname);
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
+        /*
         for (int i =0;i<8;i++){
             for (int j=0;j<8;j++){
                 if (cells[i][j].getOpponentChecker()){
@@ -32,9 +33,16 @@ public class Game {
                 }
             }
         }
+
         cells[2][4].setOpponentChecker(true);
         cells[2][6].setOpponentChecker(true);
         cells[5][5].setOpponentChecker(true);
+        System.out.println(getStatus());
+        String tmp = getStatus();
+        setStatus(tmp);
+        System.out.println(getStatus());
+        */
+        draw();
     }
 
 
@@ -317,6 +325,46 @@ public class Game {
             }
         }
         return number;
+    }
+
+    public void setStatus(String s) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (s.charAt(8*i+j)=='2'){
+                    cells[i][j].setOpponentChecker(false);
+                    cells[i][j].setMyChecker(true);
+
+                }
+                else if (s.charAt(8*i+j)=='1'){
+                    cells[i][j].setMyChecker(false);
+                    cells[i][j].setOpponentChecker(true);
+                }
+                else if (s.charAt(8*i+j)=='0'){
+                    cells[i][j].setEmpty(true);
+                }
+                else {
+                    System.out.println("HELLO, MY FRIEND");
+                }
+            }
+        }
+    }
+
+    public String getStatus(){
+        String s = "";
+        for (int i=0;i<8;i++){
+            for (int j=0;j<8;j++){
+                if (cells[i][j].getMyChecker()){
+                    s+='1';
+                }
+                else if (cells[i][j].getOpponentChecker()){
+                    s+='2';
+                }
+                else{
+                    s+='0';
+                }
+            }
+        }
+        return s;
     }
 
     public void addListener(ActionListener a, int i, int j) {
