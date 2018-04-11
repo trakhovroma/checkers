@@ -104,8 +104,8 @@ public class Game {
                     }
 
                 } else if (cell.getKing() == true) {
-                    int i = x;
-                    int j = y;
+                    int i = cell.getX();
+                    int j = cell.getY();
                     System.out.println("******************");
                     System.out.println(x);
                     System.out.println(y);
@@ -122,8 +122,8 @@ public class Game {
                             y+=100;
                         }
                     }
-                    i = x;
-                    j = y;
+                    i = cell.getX();
+                    j = cell.getY();
 
                     while ((i >= 1) & (j <= 6)) {
                         System.out.println("secondWHILE");
@@ -137,8 +137,8 @@ public class Game {
                             j+=100;
                         }
                     }
-                    i = x;
-                    j = y;
+                    i = cell.getX();
+                    j = cell.getY();
                     System.out.println("TEST2");
                     System.out.println(i);
                     System.out.println(j);
@@ -158,8 +158,8 @@ public class Game {
                             j-=100;
                         }
                     }
-                    i = x;
-                    j = y;
+                    i = cell.getX();
+                    j = cell.getY();
                     while ((i >= 1) & (j >= 1)) {
                         if (cells[i - 1][j - 1].getEmpty()) {
                             cells[i - 1][j - 1].setColored(true);
