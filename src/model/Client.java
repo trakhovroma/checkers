@@ -37,19 +37,19 @@ public class Client {
         out.close();
         in.close();
     }
-    public int clientReceive() throws IOException{
+    public String clientReceive() throws IOException{
         String input = in.readLine();
-        return Integer.parseInt(input);
+        return input;
     }
 
-    public int clientSend(int coord) throws IOException {
-        out.println(Integer.toString(coord));
+    public String clientSend(String s) throws IOException {
+        out.println(s);
         String input = in.readLine();
-        return Integer.parseInt(input);
+        return input;
 
     }
-    public void clientSendLast(int coord) throws IOException {
-        out.println(Integer.toString(coord));
+    public void clientSendLast(String s) throws IOException {
+        out.println(s);
     }
     public String sendName(String name) throws IOException{
         String input = in.readLine();

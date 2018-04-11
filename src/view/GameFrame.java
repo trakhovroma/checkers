@@ -76,6 +76,13 @@ public class GameFrame extends JFrame {
         buttons[i][7-j].setBackground(new Color(226,213,65));
     }
 
+    public void setEnabledButtons(boolean b) {
+        for (int i=0;i<8;i++){
+            for (int j=0;j<8;j++){
+                buttons[i][j].setEnabled(b);
+            }
+        }
+    }
 
     public void setMyChecker(int i, int j){
         buttons[i][j].setIcon(new ImageIcon(GREENCHECKER));

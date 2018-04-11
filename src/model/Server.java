@@ -17,7 +17,7 @@ public class Server {
 
     public Server(JFrame frame) throws IOException {
 
-        //System.out.println("Welcome to Server side");
+        System.out.println("Welcome to Server side");
         in = null;
         out = null;
 
@@ -27,7 +27,7 @@ public class Server {
         // create server socket
         try
 
-        {servers = create(new int[] {4567,7654,8904,4567,8765});
+        {servers = create(new int[] {4567,7654,8904,8765,1234,4321,2345});
         } catch(IOException e)
         {
             e.printStackTrace();
@@ -62,13 +62,13 @@ public class Server {
         }
     }
 
-    public int serverSend(int coord) throws IOException {
-        out.println(Integer.toString(coord));
+    public String serverSend(String s) throws IOException {
+        out.println(s);
         String input = in.readLine();
-        return Integer.parseInt(input);
+        return input;
     }
-    public void serverSendLast(int coord) throws IOException {
-        out.println(Integer.toString(coord));
+    public void serverSendLast(String s) throws IOException {
+        out.println(s);
     }
     public String sendName(String name) throws IOException{
         out.println(name);

@@ -32,6 +32,8 @@ public class NewGame {
             }
             st.dispose();
             model.Game game = new model.Game(st.getString(),opponent_name);
+            controller.Game cg = new controller.Game(game);
+            game.startServer();
         }
     }
 
@@ -53,6 +55,8 @@ public class NewGame {
             }
             st.dispose();
             model.Game game = new model.Game(st.getString(),opponent_name);
+            controller.Game cg = new controller.Game(game);
+            game.startClient();
         }
     }
     public void dispose(){ st.dispose(); }

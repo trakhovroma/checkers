@@ -326,6 +326,23 @@ public class Game {
         }
         return number;
     }
+    public void startServer(){
+        gf.setEnabledButtons(true);
+    }
+
+    public void startClient(){
+        gf.setEnabledButtons(false);
+    }
+
+    public void serverTurn(){
+        JOptionPane.showMessageDialog(gf, "Your turn");
+        gf.setEnabledButtons(true);
+    }
+
+    public void ClientTurn(){
+        JOptionPane.showMessageDialog(gf, "Your turn");
+        gf.setEnabledButtons(true);
+    }
 
     public void setStatus(String s) {
         for (int i = 0; i < 8; i++) {
