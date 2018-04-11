@@ -25,6 +25,16 @@ public class Game {
         gf = new view.GameFrame(myname, opponentname);
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
+        for (int i =0;i<8;i++){
+            for (int j=0;j<8;j++){
+                if (cells[i][j].getOpponentChecker()){
+                    cells[i][j].setOpponentChecker(false);
+                }
+            }
+        }
+        cells[2][4].setOpponentChecker(true);
+        cells[2][6].setOpponentChecker(true);
+        cells[5][5].setOpponentChecker(true);
     }
 
 
@@ -375,10 +385,14 @@ public class Game {
     }
 
     public void draw(){
+        metamorphosis();
         gf.setBasicColors();
         setColoredYellow();
         setCheckers();
-    }public boolean checkeat(){
+    }
+
+
+    public boolean checkeat(){
         boolean eat = false;
         for (int k=0;k<8;k++){
             for (int l=0;l<8;l++){
@@ -401,6 +415,16 @@ public class Game {
         }
         else {
             System.out.println("nothing to eat");
+        }
+    }
+
+    public void metamorphosis(){
+        for (int i=0;i<8;i++){
+            for (int j=0;j<8;j++){
+                if ((cells[i][j].getMyChecker())&(j ==7)){
+                    cells[i][j].setKing(true);
+                }
+            }
         }
     }
 

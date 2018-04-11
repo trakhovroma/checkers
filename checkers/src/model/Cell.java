@@ -34,7 +34,7 @@ public class Cell {
             this.my_checker=false;
         }
 
-        if ((this.active == true) &(this.y ==5)){
+        if ((this.active == true) &(this.y >=5)){
             this.opponent_checker = true;
         }
         else{
@@ -43,14 +43,8 @@ public class Cell {
         if ((this.active == true) &(this.y >=3) & (this.y <=4)){
             this.empty = true;
         }
-        else if ((this.active == true) &(this.y >=6)){
-            this.empty = true;
-        }
         else{
             this.empty = false;
-        }
-        if ((x ==0) & (y == 2)){
-            this.king = true;
         }
     }
 
