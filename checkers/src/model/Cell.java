@@ -106,6 +106,7 @@ public class Cell {
         }
         else{
             this.my_checker = my_checker;
+            this.king = my_checker;
             this.empty = true;
         }
     }
@@ -116,6 +117,7 @@ public class Cell {
         }
         else{
             this.opponent_checker = opponent_checker;
+            this.king = opponent_checker;
             this.empty = true;
         }
     }

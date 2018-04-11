@@ -419,12 +419,12 @@ public class Game {
                 }
             }
             else{
-                cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
-                cells[7-i -(7-i-getChecked()[0])/abs(7-i-getChecked()[0])][7-j -(7-j-getChecked()[1])/abs(7-j-getChecked()[1])].setOpponentChecker(false);
-                cells[7-i][7-j].setMyChecker(true);
                 if (cells[getChecked()[0]][getChecked()[1]].getKing()){
                     cells[7-i][7-j].setKing(true);
                 }
+                cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
+                cells[7-i -(7-i-getChecked()[0])/abs(7-i-getChecked()[0])][7-j -(7-j-getChecked()[1])/abs(7-j-getChecked()[1])].setOpponentChecker(false);
+                cells[7-i][7-j].setMyChecker(true);
                 setOffColored();
                 draw();
                 eat(7-i,7-j);
@@ -438,11 +438,12 @@ public class Game {
                 cells[7-i][7-j].setChecked(true);
                 draw();
             } else if (cells[7 - i][7 - j].isColored()) {
-                cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
-                cells[7-i][7-j].setMyChecker(true);
                 if (cells[getChecked()[0]][getChecked()[1]].getKing()){
                     cells[7-i][7-j].setKing(true);
                 }
+                cells[getChecked()[0]][getChecked()[1]].setMyChecker(false);
+                cells[7-i][7-j].setMyChecker(true);
+
                 setOffColored();
                 draw();
             }
