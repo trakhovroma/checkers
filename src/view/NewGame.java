@@ -11,7 +11,7 @@ public class NewGame extends JFrame {
     private JFrame frame;
 
     public NewGame() {
-        frame = new JFrame("Sea Battle");
+        frame = new JFrame("Checkers");
         frame.setResizable(false);
         frame.setSize(400, 600);
 
@@ -41,6 +41,8 @@ public class NewGame extends JFrame {
 
         startgame1.setBackground(new Color(102, 51, 0));
         startgame2.setBackground(new Color(102, 51, 0));
+        startgame1.setForeground(Color.WHITE);
+        startgame2.setForeground(Color.WHITE);
 
         label1.setFont(new Font("Droid Sans Mono",Font.BOLD, 28));
 

@@ -6,11 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Menu extends model.Menu{
-    private model.Menu frame;
+public class Menu extends view.Menu {
 
-    public Menu(model.Menu frame){
-
+    view.Menu frame;
+    public Menu(view.Menu frame){
         this.frame = frame;
         this.frame.addMenuItemListener(new ExitAction(), getExit());
         this.frame.addMenuItemListener(new AboutAction(), getAbout());
@@ -25,7 +24,7 @@ public class Menu extends model.Menu{
     private class AboutAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e){
-            aboutAct();
+            aboutAction();
         }
     }
 
@@ -39,7 +38,9 @@ public class Menu extends model.Menu{
     private class NewGameAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            newGame();
+            getFrame().dispose();
+            model.NewGame ng = new model.NewGame();
+            controller.NewGame sg = new controller.NewGame(ng);
         }
     }
 

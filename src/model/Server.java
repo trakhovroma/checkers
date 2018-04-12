@@ -15,7 +15,7 @@ public class Server {
     private ServerSocket servers;
     private Socket fromclient;
 
-    public Server(JFrame frame) throws IOException {
+    public Server() throws IOException {
 
         System.out.println("Welcome to Server side");
         in = null;
@@ -31,19 +31,19 @@ public class Server {
         } catch(IOException e)
         {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(frame, "smth went wrong");
+            System.out.println("smth went wrong");
         }
 
         try
         {
-            JOptionPane.showMessageDialog(frame, "Server runned, waiting your opponent");
+            System.out.println("Server runned, waiting your opponent");
             System.out.println("listening on port: " + servers.getLocalPort());
             fromclient = servers.accept();
-            JOptionPane.showMessageDialog(frame, "Opponent connected");
+            System.out.println("Opponent connected");
         } catch(IOException e)
 
         {
-            JOptionPane.showMessageDialog(frame, "Can't accept");
+            System.out.println("Can't accept");
         }
         in  = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
         out =new PrintWriter(fromclient.getOutputStream(),true);

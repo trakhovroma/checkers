@@ -14,20 +14,21 @@ public class Client {
     private PrintWriter out;
     private Socket fromserver;
 
-    public Client(JFrame frame, String ip, String port) throws IOException {
+    public Client(String ip, String port) throws IOException {
 
         System.out.println("Welcome to Client side");
         fromserver = null;
         System.out.println("Connecting to... "+"localhost");
+
         try {
             System.out.println(port);
             fromserver = new Socket(ip, Integer.valueOf(port));
         }
         catch(ConnectException e){
-            JOptionPane.showMessageDialog(frame, "There is no such server");
+            System.out.println("There is no such server");
             e.printStackTrace();
         }
-        JOptionPane.showMessageDialog(frame, "You are connected to server");
+        System.out.println("You are connected to server");
         out =new PrintWriter(fromserver.getOutputStream(),true);
         in  = new BufferedReader(new InputStreamReader(fromserver.getInputStream()));
     }

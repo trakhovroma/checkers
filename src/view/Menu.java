@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Menu extends JFrame{
-    private JFrame frame;
+    protected JFrame frame;
     private JMenuItem exit;
     private JMenuItem about;
     private JMenuItem rules;

@@ -25,7 +25,7 @@ public class Game {
         gf = new view.GameFrame(myname, opponentname);
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
-        /*
+
         for (int i =0;i<8;i++){
             for (int j=0;j<8;j++){
                 if (cells[i][j].getOpponentChecker()){
@@ -37,11 +37,22 @@ public class Game {
         cells[2][4].setOpponentChecker(true);
         cells[2][6].setOpponentChecker(true);
         cells[5][5].setOpponentChecker(true);
-        System.out.println(getStatus());
-        String tmp = getStatus();
-        setStatus(tmp);
-        System.out.println(getStatus());
+
+
+        /*
+        for (int i =0;i<8;i++){
+            for (int j=0;j<8;j++){
+                if (cells[i][j].getOpponentChecker()){
+                    cells[i][j].setOpponentChecker(false);
+                }
+            }
+        }
+
+        cells[2][6].setOpponentChecker(true);
+        cells[4][6].setOpponentChecker(true);
+        cells[6][6].setOpponentChecker(true);
         */
+
         draw();
     }
 
