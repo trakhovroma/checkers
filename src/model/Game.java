@@ -481,11 +481,10 @@ public class Game {
 
     public void actionButton(int i,int j){
         if (isServer == true) {
-
-            action(i, j);
+            action(i,j);
         }
         else if (isServer ==false){
-
+            action(i,j);
         }
     }
 
