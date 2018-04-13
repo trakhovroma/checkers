@@ -23,6 +23,7 @@ public class NewGame {
             }
             else {
                 startGame.openFrame2();
+                startGame.dispose();
                 model.Game game = new model.Game(startGame.getString(), true);
                 startGame.openFrame4();
                 view.GameFrame gf = new view.GameFrame(game);
@@ -39,6 +40,7 @@ public class NewGame {
             }
             else {
                 model.Game game = new model.Game(startGame.getString(), false);
+                startGame.dispose();
                 startGame.openFrame3();
                 view.GameFrame gf = new view.GameFrame(game);
                 controller.Game cg = new controller.Game(game, gf);
