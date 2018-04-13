@@ -16,19 +16,15 @@ public class Client {
 
     public Client(String ip, String port) throws IOException {
 
-        System.out.println("Welcome to Client side");
         fromserver = null;
-        System.out.println("Connecting to... "+"localhost");
 
         try {
             System.out.println(port);
             fromserver = new Socket(ip, Integer.valueOf(port));
         }
         catch(ConnectException e){
-            System.out.println("There is no such server");
             e.printStackTrace();
         }
-        System.out.println("You are connected to server");
         out =new PrintWriter(fromserver.getOutputStream(),true);
         in  = new BufferedReader(new InputStreamReader(fromserver.getInputStream()));
     }

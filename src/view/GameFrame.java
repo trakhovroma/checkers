@@ -66,6 +66,7 @@ public class GameFrame extends JFrame {
         gameframe.add(opponentname);
         gameframe.setLayout(null);
         gameframe.setVisible(true);
+        draw();
     }
 
     private void setCheckers(){

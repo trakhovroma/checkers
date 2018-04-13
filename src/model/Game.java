@@ -7,6 +7,8 @@ import view.Menu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.Math.abs;
 
@@ -15,16 +17,52 @@ public class Game {
     public static final int NUMBERCOLUMNS = 8;
 
     private Cell[][] cells;
+    private Server server= null;
+    private Client client =null;
+    private boolean isServer;
     private String message = "no_mes";
     private String myname;
     private String opponentname;
 
-    public Game(String my_name, String opponent_name){
+    public Game(String my_name, boolean isServer1){
+        isServer = isServer1;
         myname = my_name;
-        opponentname = opponent_name;
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
-
+        if (isServer){
+            if (myname.equals("")){
+                int num = ThreadLocalRandom.current().nextInt(1, 100);
+                myname = "AnonymousStranger"+Integer.toString(num);
+                setMessage("You haven't input your name, that's why you are AnonymousStranger" + Integer.toString(num));
+            }
+            else {
+                try {
+                    server = new Server();
+                    opponentname = server.sendName(my_name);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    setMessage("smth went wrong");
+                    System.exit(255);
+                }
+            }
+        }
+        else if (isServer == false){
+            if (my_name.equals("")){
+                int num = ThreadLocalRandom.current().nextInt(1, 100);
+                myname = "AnonymousStranger"+Integer.toString(num);
+                setMessage("You haven't input your name, that's why you are AnonymousStranger" + Integer.toString(num));
+            }
+            else {
+                try {
+                    client = new Client("localhost", "4567");
+                    opponentname = client.sendName(my_name);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    setMessage("smth went wrong");
+                    System.exit(255);
+                }
+            }
+        }
         for (int i =0;i<8;i++){
             for (int j=0;j<8;j++){
                 if (cells[i][j].getOpponentChecker()){
@@ -441,7 +479,18 @@ public class Game {
         }
     }
 
-    public void actionButton(int i, int j){
+    public void actionButton(int i,int j){
+        if (isServer == true) {
+
+            action(i, j);
+        }
+        else if (isServer ==false){
+
+        }
+    }
+
+
+    public void action(int i, int j){
         setMessage("no_mes");
         if (checkeat()){
             if (cells[7 - i][7 - j].isColored() == false){

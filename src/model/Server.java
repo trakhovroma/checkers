@@ -17,7 +17,6 @@ public class Server {
 
     public Server() throws IOException {
 
-        System.out.println("Welcome to Server side");
         in = null;
         out = null;
 
@@ -31,19 +30,14 @@ public class Server {
         } catch(IOException e)
         {
             e.printStackTrace();
-            System.out.println("smth went wrong");
         }
 
         try
         {
-            System.out.println("Server runned, waiting your opponent");
-            System.out.println("listening on port: " + servers.getLocalPort());
             fromclient = servers.accept();
-            System.out.println("Opponent connected");
         } catch(IOException e)
 
         {
-            System.out.println("Can't accept");
         }
         in  = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
         out =new PrintWriter(fromclient.getOutputStream(),true);
@@ -58,7 +52,6 @@ public class Server {
         }
         catch(IOException e){
             e.printStackTrace();
-            System.out.println("smth went wrong");
         }
     }
 

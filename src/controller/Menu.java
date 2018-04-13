@@ -39,7 +39,7 @@ public class Menu extends view.Menu {
         @Override
         public void actionPerformed(ActionEvent e) {
             getFrame().dispose();
-            model.NewGame ng = new model.NewGame();
+            view.NewGame ng = new view.NewGame();
             controller.NewGame sg = new controller.NewGame(ng);
         }
     }

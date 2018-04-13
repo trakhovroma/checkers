@@ -61,6 +61,30 @@ public class NewGame extends JFrame {
         frame.setVisible(true);
         pack();
     }
+
+    public void openFrame1(){
+        JOptionPane.showMessageDialog(frame, "Enter your name");
+    }
+
+    public void openFrame2(){
+        JOptionPane.showMessageDialog(frame, "Server runned, waiting your opponent");
+    }
+
+    public void openFrame3(){
+        JOptionPane.showMessageDialog(frame, "You are connected to server");
+    }
+    public void openFrame4(){
+        JOptionPane.showMessageDialog(frame, "Opponent found. Start!");
+    }
+
+    public JButton getStartgame1() {
+        return startgame1;
+    }
+
+    public JButton getStartgame2() {
+        return startgame2;
+    }
+
     public String getString(){
         return textField.getText();
     }
