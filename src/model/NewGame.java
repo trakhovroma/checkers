@@ -18,11 +18,10 @@ public class NewGame {
             st.showmessage("You have to input name");
         }
         else {
-            model.Info tr = new model.Info(1,st.getString());
 
             try {
-                server = new Server(st);
-                opponent_name = server.sendName(tr.getName());
+                server = new Server();
+                opponent_name = server.sendName(st.getString());
 
             }
             catch(IOException e){
@@ -32,7 +31,8 @@ public class NewGame {
             }
             st.dispose();
             model.Game game = new model.Game(st.getString(),opponent_name);
-            controller.Game cg = new controller.Game(game);
+            view.GameFrame gf = new view.GameFrame(game);
+            controller.Game g = new controller.Game(game,gf);
             game.startServer();
         }
     }
@@ -42,11 +42,10 @@ public class NewGame {
         if (st.getString().equals("")) {
             st.showmessage("You have to input name");
         } else {
-            model.Info tr = new model.Info(0, st.getString());
 
             try {
-                client = new Client(st,"localhost","4567");
-                opponent_name = client.sendName(tr.getName());
+                client = new Client("localhost","4567");
+                opponent_name = client.sendName(st.getString());
             }
             catch(IOException e){
                 e.printStackTrace();
@@ -55,7 +54,8 @@ public class NewGame {
             }
             st.dispose();
             model.Game game = new model.Game(st.getString(),opponent_name);
-            controller.Game cg = new controller.Game(game);
+            view.GameFrame gf = new view.GameFrame(game);
+            controller.Game g = new controller.Game(game,gf);
             game.startClient();
         }
     }

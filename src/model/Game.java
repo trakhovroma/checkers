@@ -14,15 +14,14 @@ public class Game {
     public static final int NUMBERROWS = 8;
     public static final int NUMBERCOLUMNS = 8;
 
-    private view.GameFrame gf;
     private Cell[][] cells;
+    private String message = "no_mes";
     private String myname;
     private String opponentname;
 
     public Game(String my_name, String opponent_name){
         myname = my_name;
         opponentname = opponent_name;
-        gf = new view.GameFrame(myname, opponentname);
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
 
@@ -37,23 +36,6 @@ public class Game {
         cells[2][4].setOpponentChecker(true);
         cells[2][6].setOpponentChecker(true);
         cells[5][5].setOpponentChecker(true);
-
-
-        /*
-        for (int i =0;i<8;i++){
-            for (int j=0;j<8;j++){
-                if (cells[i][j].getOpponentChecker()){
-                    cells[i][j].setOpponentChecker(false);
-                }
-            }
-        }
-
-        cells[2][6].setOpponentChecker(true);
-        cells[4][6].setOpponentChecker(true);
-        cells[6][6].setOpponentChecker(true);
-        */
-
-        draw();
     }
 
 
@@ -84,11 +66,6 @@ public class Game {
                             cells[getnearestcheck3(x, y)[0] - 1][getnearestcheck3(x, y)[1] + 1].setColored(true);
                         }
                     } else if ((getnearestcheck4(x, y)[0] <= 7) & (getnearestcheck4(x, y)[0] > 0) & (getnearestcheck4(x, y)[1] <= 7) & (getnearestcheck4(x, y)[1] > 0)) {
-                        System.out.println("********");
-                        System.out.println(cells[0][4].getEmpty());
-                        System.out.println(getnearestcheck4(x, y)[0]);
-                        System.out.println(getnearestcheck4(x, y)[1]);
-                        System.out.println("********");
                         if (cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(x, y)[1] - 1].getEmpty() == true) {
                             cells[getnearestcheck4(x, y)[0] - 1][getnearestcheck4(x, y)[1] - 1].setColored(true);
                         }
@@ -192,7 +169,8 @@ public class Game {
             }
         }
         else{
-            JOptionPane.showMessageDialog(gf, "Select your own checker");
+            setMessage("Select your own checker");
+            System.out.println("Select your own checker");
         }
     }
 
@@ -248,6 +226,14 @@ public class Game {
             }
         }
         return false;
+    }
+
+    public String getMyname() {
+        return myname;
+    }
+
+    public String getOpponentname() {
+        return opponentname;
     }
 
     public int[] getnearestcheck1(int x, int y){
@@ -338,21 +324,18 @@ public class Game {
         return number;
     }
     public void startServer(){
-        gf.setEnabledButtons(true);
+
     }
 
     public void startClient(){
-        gf.setEnabledButtons(false);
+
     }
 
     public void serverTurn(){
-        JOptionPane.showMessageDialog(gf, "Your turn");
-        gf.setEnabledButtons(true);
+        System.out.println("Your turn");
     }
 
     public void ClientTurn(){
-        JOptionPane.showMessageDialog(gf, "Your turn");
-        gf.setEnabledButtons(true);
     }
 
     public void setStatus(String s) {
@@ -395,18 +378,6 @@ public class Game {
         return s;
     }
 
-    public void addListener(ActionListener a, int i, int j) {
-        gf.getButtons()[i][j].addActionListener(a);
-    }
-
-    public void addListenerConcede(ActionListener a) {
-        gf.getConcedeButton().addActionListener(a);
-    }
-
-    public void addListenerDraw(ActionListener a){
-        gf.getDrawButton().addActionListener(a);
-    }
-
     public void setOffColored(){
         for (int i=0;i<8;i++){
             for(int j = 0;j<8;j++) {
@@ -418,35 +389,8 @@ public class Game {
             }
     }
 
-    public void setColoredYellow(){
-        for (int i=0;i<8;i++){
-            for(int j = 0;j<8;j++){
-                if (cells[i][j].isColored()){
-                    gf.setYellow(i,j);
-                }
-                else {
-                }
-            }
-        }
-    }
-
-    public void setCheckers(){
-        for (int i=0;i<8;i++){
-            for(int j = 0;j<8;j++){
-                if ((cells[i][j].getMyChecker()) & (cells[i][j].getKing())){
-                    gf.setMyKing(i,7-j);
-                }
-                else if (cells[i][j].getMyChecker()){
-                    gf.setMyChecker(i,7-j);
-                }
-                if ((cells[i][j].getOpponentChecker()) & (cells[i][j].getKing())){
-                    gf.setOpponentKing(i,7-j);
-                }
-                else if (cells[i][j].getOpponentChecker()){
-                    gf.setOpponentChecker(i,7-j);
-                }
-            }
-        }
+    public Cell[][] getCells() {
+        return cells;
     }
 
     public int[] getChecked(){
@@ -458,13 +402,6 @@ public class Game {
             }
         }
         return new int[] {99,99};
-    }
-
-    public void draw(){
-        metamorphosis();
-        gf.setBasicColors();
-        setColoredYellow();
-        setCheckers();
     }
 
 
@@ -487,7 +424,7 @@ public class Game {
             setOffColored();
             availableturns(cells[i][j]);
             cells[i][j].setChecked(true);
-            draw();
+            metamorphosis();
         }
         else {
             System.out.println("nothing to eat");
@@ -505,18 +442,18 @@ public class Game {
     }
 
     public void actionButton(int i, int j){
-
+        setMessage("no_mes");
         if (checkeat()){
             if (cells[7 - i][7 - j].isColored() == false){
                 if (eatmarker(7-i,7-j) ==true){
                     setOffColored();
                     availableturns(cells[7 - i][7 - j]);
                     cells[7-i][7-j].setChecked(true);
-                    draw();
+                    metamorphosis();
                 }
                 else{
-                    JOptionPane.showMessageDialog(gf, "You need to eat");
-                }
+                    setMessage("You need to eat");
+            }
             }
             else{
                 if (cells[getChecked()[0]][getChecked()[1]].getKing()){
@@ -526,7 +463,7 @@ public class Game {
                 cells[7-i -(7-i-getChecked()[0])/abs(7-i-getChecked()[0])][7-j -(7-j-getChecked()[1])/abs(7-j-getChecked()[1])].setOpponentChecker(false);
                 cells[7-i][7-j].setMyChecker(true);
                 setOffColored();
-                draw();
+                metamorphosis();
                 eat(7-i,7-j);
             }
 
@@ -536,7 +473,7 @@ public class Game {
                 setOffColored();
                 availableturns(cells[7 - i][7 - j]);
                 cells[7-i][7-j].setChecked(true);
-                draw();
+                metamorphosis();
             } else if (cells[7 - i][7 - j].isColored()) {
                 if (cells[getChecked()[0]][getChecked()[1]].getKing()){
                     cells[7-i][7-j].setKing(true);
@@ -545,8 +482,16 @@ public class Game {
                 cells[7-i][7-j].setMyChecker(true);
 
                 setOffColored();
-                draw();
+                metamorphosis();
             }
         }
 }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
