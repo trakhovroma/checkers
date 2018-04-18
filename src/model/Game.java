@@ -357,16 +357,18 @@ public class Game {
     public void setStatus(String s) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (s.charAt(8*i+j)=='2'){
+                if (s.charAt(63-8*i-j)=='2'){
                     cells[i][j].setOpponentChecker(false);
                     cells[i][j].setMyChecker(true);
 
                 }
-                else if (s.charAt(8*i+j)=='1'){
+                else if (s.charAt(63-8*i-j)=='1'){
                     cells[i][j].setMyChecker(false);
                     cells[i][j].setOpponentChecker(true);
                 }
-                else if (s.charAt(8*i+j)=='0'){
+                else if (s.charAt(63-8*i-j)=='0'){
+                    cells[i][j].setOpponentChecker(false);
+                    cells[i][j].setMyChecker(false);
                     cells[i][j].setEmpty(true);
                 }
                 else {
@@ -468,7 +470,7 @@ public class Game {
         else if (isServer ==false){
             action(i,j);
             if (lastTurn){
-                String newstatus = server.serverSend(getStatus());
+                String newstatus = client.clientSend(getStatus());
                 setStatus(newstatus);
             }
         }
