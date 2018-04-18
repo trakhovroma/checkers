@@ -23,6 +23,7 @@ public class Game {
     private String message = "no_mes";
     private String myname;
     private String opponentname;
+    private boolean lastTurn;
 
     public Game(String my_name, boolean isServer1){
         isServer = isServer1;
@@ -30,12 +31,6 @@ public class Game {
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
         if (isServer){
-            if (myname.equals("")){
-                int num = ThreadLocalRandom.current().nextInt(1, 100);
-                myname = "AnonymousStranger"+Integer.toString(num);
-                setMessage("You haven't input your name, that's why you are AnonymousStranger" + Integer.toString(num));
-            }
-            else {
                 try {
                     server = new Server();
                     opponentname = server.sendName(my_name);
@@ -44,36 +39,19 @@ public class Game {
                     setMessage("smth went wrong");
                     System.exit(255);
                 }
-            }
         }
         else if (isServer == false){
-            if (my_name.equals("")){
-                int num = ThreadLocalRandom.current().nextInt(1, 100);
-                myname = "AnonymousStranger"+Integer.toString(num);
-                setMessage("You haven't input your name, that's why you are AnonymousStranger" + Integer.toString(num));
-            }
-            else {
                 try {
                     client = new Client("localhost", "4567");
                     opponentname = client.sendName(my_name);
+                    String stat = client.clientReceive();
+                    setStatus(stat);
                 } catch (IOException e) {
                     e.printStackTrace();
                     setMessage("smth went wrong");
                     System.exit(255);
                 }
-            }
         }
-        for (int i =0;i<8;i++){
-            for (int j=0;j<8;j++){
-                if (cells[i][j].getOpponentChecker()){
-                    cells[i][j].setOpponentChecker(false);
-                }
-            }
-        }
-
-        cells[2][4].setOpponentChecker(true);
-        cells[2][6].setOpponentChecker(true);
-        cells[5][5].setOpponentChecker(true);
     }
 
 
@@ -482,9 +460,17 @@ public class Game {
     public void actionButton(int i,int j){
         if (isServer == true) {
             action(i,j);
+            if (lastTurn){
+                String newstatus = server.serverSend(getStatus());
+                setStatus(newstatus);
+            }
         }
         else if (isServer ==false){
             action(i,j);
+            if (lastTurn){
+                String newstatus = server.serverSend(getStatus());
+                setStatus(newstatus);
+            }
         }
     }
 
@@ -513,6 +499,12 @@ public class Game {
                 setOffColored();
                 metamorphosis();
                 eat(7-i,7-j);
+                if (checkeat()){
+                    lastTurn = false;
+                }
+                else{
+                    lastTurn = true;
+                }
             }
 
         }
@@ -531,6 +523,7 @@ public class Game {
 
                 setOffColored();
                 metamorphosis();
+                lastTurn = true;
             }
         }
 }

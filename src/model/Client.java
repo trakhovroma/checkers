@@ -34,15 +34,27 @@ public class Client {
         out.close();
         in.close();
     }
-    public String clientReceive() throws IOException{
-        String input = in.readLine();
-        return input;
+    public String clientReceive(){
+        try {
+            String input = in.readLine();
+            return input;
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            return "ERORR_CLIENT_RECEIVE";
+        }
     }
 
-    public String clientSend(String s) throws IOException {
-        out.println(s);
-        String input = in.readLine();
-        return input;
+    public String clientSend(String s) {
+        try {
+            out.println(s);
+            String input = in.readLine();
+            return input;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            return "ERROR_CLIENT_SEND";
+        }
 
     }
     public void clientSendLast(String s) throws IOException {

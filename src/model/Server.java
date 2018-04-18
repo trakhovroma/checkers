@@ -55,10 +55,16 @@ public class Server {
         }
     }
 
-    public String serverSend(String s) throws IOException {
-        out.println(s);
-        String input = in.readLine();
-        return input;
+    public String serverSend(String s) {
+        try {
+            out.println(s);
+            String input = in.readLine();
+            return input;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            return "ERROR";
+        }
     }
     public void serverSendLast(String s) throws IOException {
         out.println(s);
