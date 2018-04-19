@@ -1,12 +1,5 @@
 package model;
 
-
-import view.GameFrame;
-import view.Menu;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -23,6 +16,8 @@ public class Game {
     private String message = "no_mes";
     private String myname;
     private String opponentname;
+    private boolean isWaiting;
+    private boolean lastTurn;
 
     public Game(String my_name, boolean isServer1){
         isServer = isServer1;
@@ -30,38 +25,26 @@ public class Game {
         cells = new Cell[NUMBERROWS][NUMBERCOLUMNS];
         fillcells();
         if (isServer){
-            if (myname.equals("")){
-                int num = ThreadLocalRandom.current().nextInt(1, 100);
-                myname = "AnonymousStranger"+Integer.toString(num);
-                setMessage("You haven't input your name, that's why you are AnonymousStranger" + Integer.toString(num));
-            }
-            else {
                 try {
                     server = new Server();
                     opponentname = server.sendName(my_name);
+                    isWaiting = false;
                 } catch (IOException e) {
                     e.printStackTrace();
-                    setMessage("smth went wrong");
+                    setMessage("Something went wrong");
                     System.exit(255);
                 }
-            }
         }
         else if (isServer == false){
-            if (my_name.equals("")){
-                int num = ThreadLocalRandom.current().nextInt(1, 100);
-                myname = "AnonymousStranger"+Integer.toString(num);
-                setMessage("You haven't input your name, that's why you are AnonymousStranger" + Integer.toString(num));
-            }
-            else {
                 try {
                     client = new Client("localhost", "4567");
                     opponentname = client.sendName(my_name);
+                    setStatus(client.clientReceive());
                 } catch (IOException e) {
                     e.printStackTrace();
-                    setMessage("smth went wrong");
+                    setMessage("Something went wrong");
                     System.exit(255);
                 }
-            }
         }
         for (int i =0;i<8;i++){
             for (int j=0;j<8;j++){
@@ -208,7 +191,6 @@ public class Game {
         }
         else{
             setMessage("Select your own checker");
-            System.out.println("Select your own checker");
         }
     }
 
@@ -457,16 +439,31 @@ public class Game {
         return eat;
     }
 
-    public void eat(int i,int j){
+
+    public void eat(int i, int j){
         if (eatmarker(i,j)){
             setOffColored();
             availableturns(cells[i][j]);
             cells[i][j].setChecked(true);
             metamorphosis();
+            if (checkColored() == false){
+                lastTurn =true;
+            }
         }
         else {
             System.out.println("nothing to eat");
         }
+    }
+    public boolean checkColored(){
+        boolean result = false;
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (cells[i][j].isColored()){
+                    result = true;
+                }
+            }
+        }
+        return result;
     }
 
     public void metamorphosis(){
@@ -479,17 +476,33 @@ public class Game {
         }
     }
 
-    public void actionButton(int i,int j){
+    private void serverTurn(int i, int j) throws IOException {
+        action(i, j);
+        if (lastTurn) {
+            String status = server.serverSend(getStatus());
+            setStatus(status);
+        }
+    }
+    private void clientTurn(int i,int j) throws IOException {
+        action(i, j);
+        if (lastTurn){
+            String status = client.clientSend(getStatus());
+            setStatus(status);
+        }
+    }
+
+    public void actionButton(int i,int j) throws IOException{
         if (isServer == true) {
-            action(i,j);
+                serverTurn(i,j);
         }
         else if (isServer ==false){
-            action(i,j);
+            clientTurn(i,j);
         }
     }
 
 
     public void action(int i, int j){
+        lastTurn =false;
         setMessage("no_mes");
         if (checkeat()){
             if (cells[7 - i][7 - j].isColored() == false){
@@ -513,6 +526,7 @@ public class Game {
                 setOffColored();
                 metamorphosis();
                 eat(7-i,7-j);
+
             }
 
         }
@@ -534,6 +548,10 @@ public class Game {
             }
         }
 }
+
+    public boolean isWaiting() {
+        return isWaiting;
+    }
 
     public String getMessage() {
         return message;

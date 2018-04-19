@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 
 public class Game {
@@ -61,266 +62,266 @@ public class Game {
 
     }
 
-    private class Concede implements ActionListener {
+    private class Concede implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Concede");
         }
     }
 
-    private class Draw implements ActionListener {
+    private class Draw implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             System.out.println("Draw");
             vg.draw();
         }
     }
-    private class A2 implements ActionListener {
+    private class A2 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(6,0);
             vg.draw();
         }
     }
-    private class A4 implements ActionListener {
+    private class A4 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(4,0);
             vg.draw();
         }
     }
-    private class A6 implements ActionListener {
+    private class A6 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(2,0);
             vg.draw();
         }
     }
-    private class A8 implements ActionListener {
+    private class A8 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(0,0);
             vg.draw();
         }
     }
 
-    private class B1 implements ActionListener {
+    private class B1 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(7,1);
             vg.draw();
         }
     }
-    private class B3 implements ActionListener {
+    private class B3 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(5,1);
             vg.draw();
         }
     }
-    private class B5 implements ActionListener {
+    private class B5 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(3,1);
             vg.draw();
         }
     }
-    private class B7 implements ActionListener {
+    private class B7 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(1,1);
             vg.draw();
         }
     }
 
-    private class C2 implements ActionListener {
+    private class C2 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(6,2);
             vg.draw();
         }
     }
 
-    private class C4 implements ActionListener {
+    private class C4 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(4,2);
             vg.draw();
         }
     }
 
-    private class C6 implements ActionListener {
+    private class C6 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(2,2);
             vg.draw();
         }
     }
 
-    private class C8 implements ActionListener {
+    private class C8 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(0,2);
             vg.draw();
         }
     }
 
-    private class D1 implements ActionListener {
+    private class D1 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(7,3);
             vg.draw();
         }
     }
 
-    private class D3 implements ActionListener {
+    private class D3 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(5,3);
             vg.draw();
         }
     }
 
-    private class D5 implements ActionListener {
+    private class D5 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(3,3);
             vg.draw();
         }
     }
 
-    private class D7 implements ActionListener {
+    private class D7 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(1,3);
             vg.draw();
         }
     }
 
 
-    private class E2 implements ActionListener {
+    private class E2 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(6,4);
             vg.draw();
         }
     }
 
-    private class E4 implements ActionListener {
+    private class E4 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(4,4);
             vg.draw();
         }
     }
 
-    private class E6 implements ActionListener {
+    private class E6 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(2,4);
             vg.draw();
         }
     }
 
-    private class E8 implements ActionListener {
+    private class E8 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(0,4);
-            vg.draw();
+                    vg.draw();
         }
     }
 
-    private class F1 implements ActionListener {
+    private class F1 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(7,5);
             vg.draw();
         }
     }
 
-    private class F3 implements ActionListener {
+    private class F3 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(5,5);
             vg.draw();
         }
     }
 
-    private class F5 implements ActionListener {
+    private class F5 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(3,5);
             vg.draw();
         }
     }
 
-    private class F7 implements ActionListener {
+    private class F7 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(1,5);
             vg.draw();
         }
     }
 
-    private class G2 implements ActionListener {
+    private class G2 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(6,6);
             vg.draw();
         }
     }
 
-    private class G4 implements ActionListener {
+    private class G4 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(4,6);
             vg.draw();
         }
     }
 
-    private class G6 implements ActionListener {
+    private class G6 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(2,6);
             vg.draw();
         }
     }
 
-    private class G8 implements ActionListener {
+    private class G8 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(0,6);
             vg.draw();
         }
     }
 
-    private class H1 implements ActionListener {
+    private class H1 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(7,7);
             vg.draw();
         }
     }
 
-    private class H3 implements ActionListener {
+    private class H3 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(5,7);
             vg.draw();
         }
     }
 
-    private class H5 implements ActionListener {
+    private class H5 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(3,7);
             vg.draw();
         }
     }
 
-    private class H7 implements ActionListener {
+    private class H7 implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e){
             game.actionButton(1,7);
             vg.draw();
         }

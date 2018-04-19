@@ -27,6 +27,7 @@ public class GameFrame extends JFrame {
     private model.Game g;
     private String myn;
     private String opn;
+    private boolean active;
 
     public GameFrame(model.Game game) {
 
@@ -35,6 +36,7 @@ public class GameFrame extends JFrame {
         gameframe = new JFrame("Checkers Game");
         gameframe.setSize(1080, 780);
         g = game;
+        active= g.isWaiting();
         cells = game.getCells();
         buttons = new JButton[8][8];
         for (int i = 0; i < 8; i++) {
@@ -105,6 +107,12 @@ public class GameFrame extends JFrame {
             setBasicColors();
             setColoredYellow();
             setCheckers();
+            if (active) {
+            }
+            else {
+
+                setEnabledButtons(false);
+            }
         }
         else {
             JOptionPane.showMessageDialog(gameframe, g.getMessage());
