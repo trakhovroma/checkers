@@ -99,7 +99,6 @@ public class GameFrame extends JFrame {
             }
         }
     }
-
     public void draw(){
         if (g.getMessage() == "no_mes") {
             setBasicColors();

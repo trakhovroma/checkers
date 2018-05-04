@@ -56,8 +56,12 @@ public class Game {
         @Override
         public void actionPerformed(ActionEvent e) {
             game.action(x,y);
+            System.out.println(111);
             vg.draw();
+            System.out.println(222);
             game.actionButton(x,y);
+            System.out.println(333);
+            vg.draw();
 
         }
     }
