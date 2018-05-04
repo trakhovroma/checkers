@@ -461,15 +461,15 @@ public class Game {
 
     public void actionButton(int i,int j){
         if (isServer == true) {
-            action(i,j);
             if (lastTurn){
+                lastTurn =false;
                 String newstatus = server.serverSend(getStatus());
                 setStatus(newstatus);
             }
         }
         else if (isServer ==false){
-            action(i,j);
             if (lastTurn){
+                lastTurn = false;
                 String newstatus = client.clientSend(getStatus());
                 setStatus(newstatus);
             }
