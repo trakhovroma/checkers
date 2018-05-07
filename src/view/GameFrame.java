@@ -105,6 +105,9 @@ public class GameFrame extends JFrame {
             setColoredYellow();
             setCheckers();
         }
+        else if (g.getMessage() == "draw"){
+            JOptionPane.showMessageDialog(gameframe, "DRAW");
+        }
         else {
             JOptionPane.showMessageDialog(gameframe, g.getMessage());
         }

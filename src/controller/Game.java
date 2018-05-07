@@ -24,10 +24,6 @@ public class Game {
                }
            }
        }
-
-
-
-
     }
 
     private class Concede implements ActionListener {
@@ -40,11 +36,10 @@ public class Game {
     private class Draw implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Draw");
+            game.suggestdraw();
             vg.draw();
         }
     }
-
 
     private class Action implements ActionListener {
         private int x;
