@@ -37,7 +37,6 @@ public class Game {
         @Override
         public void actionPerformed(ActionEvent e) {
             game.suggestdraw();
-            vg.draw();
         }
     }
 

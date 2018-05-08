@@ -339,20 +339,6 @@ public class Game {
         }
         return number;
     }
-    public void startServer(){
-
-    }
-
-    public void startClient(){
-
-    }
-
-    public void serverTurn(){
-        System.out.println("Your turn");
-    }
-
-    public void ClientTurn(){
-    }
 
     public void setStatus(String s) {
         if (s == "000"){
@@ -465,7 +451,7 @@ public class Game {
     public void suggestdraw(){
         if (isServer == true) {
                 String answer = server.serverSend("000");
-                if (answer == "yes"){
+                if (answer == "000"){
                     System.out.println("draw");
                 }
                 else{
@@ -474,7 +460,7 @@ public class Game {
         }
         else if (isServer ==false){
                 String answer = client.clientSend("000");
-                if (answer == "yes"){
+                if (answer == "000"){
                     System.out.println("draw");
                 }
                 else{
